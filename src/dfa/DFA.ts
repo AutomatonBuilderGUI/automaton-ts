@@ -1,13 +1,13 @@
-import AutomatonState from "./AutomatonState";
+import AutomatonState from "../AutomatonState";
 import DFATransition from "./DFATransition";
 
-import BaseAutomatonError from "./errors/BaseAutomatonError";
-import AutomatonInvalidStartStateError from "./errors/AutomatonInvalidStartStateError";
-import AutomatonInvalidAcceptStateError from "./errors/AutomatonInvalidAcceptStateError";
-import AutomatonStateWrongNumTransitionsError from "./errors/AutomatonStateWrongNumTransitionsError";
-import AutomatonTransitionInvalidCurrentStateError from "./errors/AutomatonTransitionInvalidCurrentStateError";
-import AutomatonTransitionInvalidTargetStateError from "./errors/AutomatonTransitionInvalidTargetStateError";
-import AutomatonTransitionInvalidInputTokenError from "./errors/AutomatonTransitionInvalidInputTokenError";
+import BaseAutomatonError from "../errors/BaseAutomatonError";
+import AutomatonInvalidStartStateError from "../errors/AutomatonInvalidStartStateError";
+import AutomatonInvalidAcceptStateError from "../errors/AutomatonInvalidAcceptStateError";
+import AutomatonStateWrongNumTransitionsError from "../errors/AutomatonStateWrongNumTransitionsError";
+import AutomatonTransitionInvalidCurrentStateError from "../errors/AutomatonTransitionInvalidCurrentStateError";
+import AutomatonTransitionInvalidTargetStateError from "../errors/AutomatonTransitionInvalidTargetStateError";
+import AutomatonTransitionInvalidInputTokenError from "../errors/AutomatonTransitionInvalidInputTokenError";
 
 export default class DFA {
     constructor(

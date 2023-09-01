@@ -1,5 +1,5 @@
 import BaseAutomatonError from "./BaseAutomatonError";
-import DFA from "../DFA";
+import DFA from "../dfa/DFA";
 export default class AutomatonInvalidAcceptStateError extends BaseAutomatonError {
     constructor(
         private stateIdx: number,

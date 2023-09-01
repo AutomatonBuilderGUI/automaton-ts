@@ -1,5 +1,5 @@
 import AutomatonElementError from "./AutomatonElementError";
-import DFATransition from "../DFATransition";
+import DFATransition from "../dfa/DFATransition";
 
 export default class AutomatonTransitionInvalidTargetStateError extends AutomatonElementError {
     constructor(

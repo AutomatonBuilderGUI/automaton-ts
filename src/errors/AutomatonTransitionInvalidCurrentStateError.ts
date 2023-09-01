@@ -1,5 +1,6 @@
 import AutomatonElementError from "./AutomatonElementError";
-import DFATransition from "../DFATransition";
+import DFATransition from "../dfa/DFATransition";
+
 export default class AutomatonTransitionInvalidCurrentStateError extends AutomatonElementError {
     constructor(
         protected override element: DFATransition

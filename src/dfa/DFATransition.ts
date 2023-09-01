@@ -1,4 +1,4 @@
-import AutomatonElement from "./AutomatonElement";
+import AutomatonElement from "./../AutomatonElement";
 
 export default class DFATransition extends AutomatonElement {
     constructor(
