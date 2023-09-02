@@ -2,9 +2,9 @@
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "rootDir": ".",
-    "outDir": "build",
-    "lib": ["dom"]
+    "outDir": "lib",
+    "declaration": true,
+    "lib": []
   },
   "include": [
     "src/**/*.ts",
