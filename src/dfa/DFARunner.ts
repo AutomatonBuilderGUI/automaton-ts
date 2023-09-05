@@ -6,6 +6,8 @@ export enum DFARunnerStatus {
   InProgress,
   Accepted,
   Rejected,
+  InvalidDFA,
+  InvalidInputTokens
 }
 
 export default class DFARunner {
@@ -27,8 +29,8 @@ export default class DFARunner {
 
   hasConcluded() {
     return (
-      this.status === DFARunnerStatus.Accepted ||
-      this.status === DFARunnerStatus.Rejected
+      this.status !== DFARunnerStatus.NotStarted &&
+      this.status !== DFARunnerStatus.InProgress
     );
   }
 
@@ -39,6 +41,22 @@ export default class DFARunner {
   runStep() {
     if (this.hasConcluded()) {
       return;
+    }
+
+    // First, confirm that the DFA is valid
+    if (this.dfa.getErrors().length > 0)
+    {
+      this.status = DFARunnerStatus.InvalidDFA;
+      return;
+    }
+
+    // Next, confirm that the input tokens are valid
+    for (let i = 0; i < this.initialInputTokens.length; i++)
+    {
+      if (!this.dfa.inputAlphabet.includes(this.initialInputTokens[i])) {
+        this.status = DFARunnerStatus.InvalidInputTokens;
+        return;
+      }
     }
 
     this.status = DFARunnerStatus.InProgress;

@@ -10,16 +10,13 @@ import AutomatonTransitionInvalidTargetStateError from '../errors/AutomatonTrans
 import AutomatonTransitionInvalidInputTokenError from '../errors/AutomatonTransitionInvalidInputTokenError';
 
 export default class DFA {
-  constructor(
-    public states: Array<AutomatonState>,
-    public inputAlphabet: Array<string>,
-    public transitions: Array<DFATransition>,
-    public startState: number,
-    public acceptStates: Array<number>
-  ) {
-    this.states = states;
+  public states: Array<AutomatonState> = [];
+  public inputAlphabet: Array<string> = [];
+  public transitions: Array<DFATransition> = [];
+  public startState: number = 0;
+  public acceptStates: Array<number> = [];
 
-    this.verify();
+  constructor() {
   }
 
   private stateIsValid(stateIdx: number): boolean {
@@ -30,7 +27,7 @@ export default class DFA {
     return this.transitions.filter(t => t.currentState === stateIdx);
   }
 
-  private verify() {
+  public getErrors(): Array<BaseAutomatonError> {
     const errors = Array<BaseAutomatonError>();
 
     // Confirm the accept state is valid.
@@ -47,6 +44,8 @@ export default class DFA {
 
     // Confirm all transitions are valid.
     errors.push(...this.verifyTransitions());
+
+    return errors;
   }
 
   verifyTransitions(): Array<BaseAutomatonError> {
