@@ -1,4 +1,6 @@
-import AutomatonState from '../AutomatonState';
+import BaseAutomaton from '../BaseAutomaton';
+
+import DFAState from './DFAState';
 import DFATransition from './DFATransition';
 
 import BaseAutomatonError from '../errors/BaseAutomatonError';
@@ -9,14 +11,15 @@ import AutomatonTransitionInvalidCurrentStateError from '../errors/AutomatonTran
 import AutomatonTransitionInvalidTargetStateError from '../errors/AutomatonTransitionInvalidTargetStateError';
 import AutomatonTransitionInvalidInputTokenError from '../errors/AutomatonTransitionInvalidInputTokenError';
 
-export default class DFA {
-  public states: Array<AutomatonState> = [];
+export default class DFA extends BaseAutomaton {
+  public states: Array<DFAState> = [];
   public inputAlphabet: Array<string> = [];
   public transitions: Array<DFATransition> = [];
   public startState: number = 0;
   public acceptStates: Array<number> = [];
 
   constructor() {
+    super();
   }
 
   private stateIsValid(stateIdx: number): boolean {

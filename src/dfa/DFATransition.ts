@@ -1,6 +1,7 @@
 import AutomatonElement from './../AutomatonElement';
+import DFA from './DFA';
 
-export default class DFATransition extends AutomatonElement {
+export default class DFATransition extends AutomatonElement<DFA> {
   constructor(
     public currentState: number,
     public inputToken: string,
