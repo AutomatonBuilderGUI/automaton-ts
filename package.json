@@ -1,15 +1,14 @@
 {
-  "name": "automaton",
+  "name": "automaton-kit",
   "version": "1.0.0",
-  "description": "A TypeScript library for building automatons",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "description": "A JavaScript library for building automatons",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "gts lint",
-    "clean": "gts clean",
+    "test": "mocha --reporter spec",
+    "lint": "eslint",
     "compile": "tsc",
-    "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
     "posttest": "npm run lint"
@@ -17,8 +16,12 @@
   "author": "Malcolm Anderson",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "20.4.6",
-    "gts": "^5.0.1",
+    "@types/chai": "^4.3.6",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.4.6",
+    "chai": "^4.3.8",
+    "eslint": "^8.48.0",
+    "mocha": "^10.2.0",
     "typescript": "~5.1.6"
   }
 }

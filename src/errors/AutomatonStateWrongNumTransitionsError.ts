@@ -1,15 +1,15 @@
 import AutomatonElementError from './AutomatonElementError';
 import AutomatonState from '../AutomatonState';
 export default class AutomatonStateWrongNumTransitionsError extends AutomatonElementError {
-    constructor(
-        protected override element: AutomatonState,
-        private numTransitionsWithToken: number,
-        private token: string
-    ) {
-        super(element);
-    }
+  constructor(
+    protected override element: AutomatonState,
+    private numTransitionsWithToken: number,
+    private token: string
+  ) {
+    super(element);
+  }
 
-    override errorString(): string {
-        return `State has ${this.numTransitionsWithToken} transitions for token ${this.token} when it should have exactly 1`
-    }
+  override errorString(): string {
+    return `State has ${this.numTransitionsWithToken} transitions for token ${this.token} when it should have exactly 1`;
+  }
 }
