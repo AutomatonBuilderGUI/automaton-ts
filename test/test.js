@@ -43,6 +43,7 @@ describe('create a DFA accepting strings with at least one \'a\'', () => {
     new DFATransition(1, "a", 1),
     new DFATransition(1, "b", 1)
   ];
+  dfa.startState = 0;
   dfa.acceptStates = [1];
 
   let stringsToAccept = ['baba', 'aaaa', 'a', 'bbbba', 'bbab', 'abbbabb'].map(a => a.split(''));
