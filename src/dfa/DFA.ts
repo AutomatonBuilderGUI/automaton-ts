@@ -15,19 +15,19 @@ export default class DFA extends BaseAutomaton {
   public states: Array<DFAState> = [];
   public inputAlphabet: Array<string> = [];
   public transitions: Array<DFATransition> = [];
-  public startState: number = 0;
-  public acceptStates: Array<number> = [];
+  public startState: DFAState | null = null;
+  public acceptStates: Array<DFAState> = [];
 
   constructor() {
     super();
   }
 
-  private stateIsValid(stateIdx: number): boolean {
-    return 0 <= stateIdx && stateIdx < this.states.length;
+  private stateIsValid(state: DFAState | null): boolean {
+    return state !== null && this.states.includes(state);
   }
 
-  private transitionsForCurrentState(stateIdx: number): Array<DFATransition> {
-    return this.transitions.filter(t => t.currentState === stateIdx);
+  private transitionsForCurrentState(state: DFAState): Array<DFATransition> {
+    return this.transitions.filter(t => t.currentState === state);
   }
 
   public getErrors(): Array<BaseAutomatonError> {
@@ -66,7 +66,7 @@ export default class DFA extends BaseAutomaton {
     // there is exactly one Transition per input token (no more, no less).
     for (let stateIdx = 0; stateIdx < this.states.length; stateIdx++) {
       const transitionsForCurrentState =
-        this.transitionsForCurrentState(stateIdx);
+        this.transitionsForCurrentState(this.states[stateIdx]);
 
       for (let tkIdx = 0; tkIdx < this.inputAlphabet.length; tkIdx++) {
         const token = this.inputAlphabet[tkIdx];

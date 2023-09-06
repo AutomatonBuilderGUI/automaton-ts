@@ -1,6 +1,8 @@
+import DFAState from "./DFAState";
+
 export default class DFARunInstance {
   constructor(
-    public currentState: number,
+    public currentState: DFAState | null,
     public remainingTokens: Array<string>
   ) {}
 }

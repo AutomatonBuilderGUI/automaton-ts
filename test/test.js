@@ -30,21 +30,21 @@ function runAcceptAndRejectTests(dfa, stringsToAccept, stringsToReject) {
 }
 
 describe('create a DFA accepting strings with at least one \'a\'', () => {
+  var q0 = new DFAState();
+  var q1 = new DFAState();
+
   var dfa = new DFA();
-  dfa.states = [
-    new DFAState(),
-    new DFAState()
-  ];
+  dfa.states = [q0, q1];
   dfa.inputAlphabet = ["a", "b"];
   dfa.transitions = [
-    new DFATransition(0, "a", 1),
-    new DFATransition(0, "b", 0),
+    new DFATransition(q0, "a", q1),
+    new DFATransition(q0, "b", q0),
 
-    new DFATransition(1, "a", 1),
-    new DFATransition(1, "b", 1)
+    new DFATransition(q1, "a", q1),
+    new DFATransition(q1, "b", q1)
   ];
-  dfa.startState = 0;
-  dfa.acceptStates = [1];
+  dfa.startState = q0;
+  dfa.acceptStates = [q1];
 
   let stringsToAccept = ['baba', 'aaaa', 'a', 'bbbba', 'bbab', 'abbbabb'].map(a => a.split(''));
   let stringsToReject = ['b', 'bbb', 'bb', 'bbbbbb'].map(a => a.split(''));

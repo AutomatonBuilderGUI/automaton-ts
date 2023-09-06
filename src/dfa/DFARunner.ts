@@ -105,7 +105,7 @@ export default class DFARunner {
     ) {
       const doneInstance = doneInstances[doneInstanceIdx];
 
-      if (this.dfa.acceptStates.includes(doneInstance.currentState)) {
+      if (doneInstance.currentState !== null && this.dfa.acceptStates.includes(doneInstance.currentState)) {
         this.status = DFARunnerStatus.Accepted;
         return;
       } else {

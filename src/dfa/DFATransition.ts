@@ -1,11 +1,12 @@
 import AutomatonElement from './../AutomatonElement';
 import DFA from './DFA';
+import DFAState from './DFAState';
 
 export default class DFATransition extends AutomatonElement<DFA> {
   constructor(
-    public currentState: number,
+    public currentState: DFAState,
     public inputToken: string,
-    public targetState: number
+    public targetState: DFAState
   ) {
     super();
   }

@@ -1,18 +1,16 @@
 import BaseAutomatonError from './BaseAutomatonError';
 import DFA from '../dfa/DFA';
-export default class AutomatonInvalidAcceptStateError extends BaseAutomatonError {
+import AutomatonState from '../AutomatonState';
+import BaseAutomaton from '../BaseAutomaton';
+export default class AutomatonInvalidAcceptStateError<T extends BaseAutomaton> extends BaseAutomatonError {
   constructor(
-    private stateIdx: number,
-    private automaton: DFA
+    private state: AutomatonState<T> | null,
+    private automaton: BaseAutomaton
   ) {
     super();
   }
 
   override errorString(): string {
-    return `Accept state ${
-      this.stateIdx
-    } is invalid; the highest state index is ${
-      this.automaton.states.length - 1
-    }`;
+    return `Accept state ${this.state} is invalid`;
   }
 }
