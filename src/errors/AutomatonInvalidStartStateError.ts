@@ -13,6 +13,9 @@ export default class AutomatonInvalidStartStateError<T extends BaseAutomaton> ex
     if (this.state === null) {
       return `Start state is not provided`;
     }
+    if (this.state.label === undefined) {
+      return `Start state (unnamed) is invalid`;
+    }
     return `Start state "${this.state.label}" is invalid`;
   }
 }

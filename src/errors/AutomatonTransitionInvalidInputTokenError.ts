@@ -7,6 +7,6 @@ export default class AutomatonTransitionInvalidInputTokenError extends Automaton
   }
 
   override errorString(): string {
-    return `Input token ${this.element.inputToken} is invalid`;
+    return `Input token "${this.element.inputToken}" is invalid`;
   }
 }

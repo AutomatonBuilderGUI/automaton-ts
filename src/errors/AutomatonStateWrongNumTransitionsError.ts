@@ -11,6 +11,7 @@ export default class AutomatonStateWrongNumTransitionsError extends AutomatonEle
   }
 
   override errorString(): string {
-    return `State "${this.element.label}" has ${this.numTransitionsWithToken} transitions for token "${this.token}" when it should have exactly 1`;
+    let stateName = this.element.label !== undefined ? `State "${this.element.label}"` : `Unnamed state`;
+    return `${stateName} has ${this.numTransitionsWithToken} transitions for token "${this.token}" when it should have exactly 1`;
   }
 }

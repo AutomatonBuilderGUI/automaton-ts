@@ -14,6 +14,9 @@ export default class AutomatonInvalidAcceptStateError<T extends BaseAutomaton> e
     if (this.state === null) {
       return `Accept state is invalid`;
     }
+    if (this.state.label === undefined) {
+      return `Accept state (unnamed) is invalid`;
+    }
     return `Accept state "${this.state.label}" is invalid`;
   }
 }
