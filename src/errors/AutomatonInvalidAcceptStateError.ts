@@ -11,6 +11,9 @@ export default class AutomatonInvalidAcceptStateError<T extends BaseAutomaton> e
   }
 
   override errorString(): string {
-    return `Accept state ${this.state} is invalid`;
+    if (this.state === null) {
+      return `Accept state is invalid`;
+    }
+    return `Accept state "${this.state.label}" is invalid`;
   }
 }

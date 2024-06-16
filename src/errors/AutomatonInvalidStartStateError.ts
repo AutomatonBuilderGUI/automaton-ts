@@ -10,6 +10,9 @@ export default class AutomatonInvalidStartStateError<T extends BaseAutomaton> ex
   }
 
   override errorString(): string {
-    return `Start state ${this.state} is invalid`;
+    if (this.state === null) {
+      return `Start state is not provided`;
+    }
+    return `Start state "${this.state.label}" is invalid`;
   }
 }
