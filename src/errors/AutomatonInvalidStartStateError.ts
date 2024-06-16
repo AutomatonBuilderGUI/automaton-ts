@@ -3,14 +3,14 @@ import BaseAutomaton from '../BaseAutomaton';
 import AutomatonState from '../AutomatonState';
 export default class AutomatonInvalidStartStateError<T extends BaseAutomaton> extends BaseAutomatonError {
   constructor(
-    private state: AutomatonState<T> | null,
+    private state: AutomatonState<T> | null = null,
     private automaton: BaseAutomaton
   ) {
     super();
   }
 
   override errorString(): string {
-    if (this.state === null) {
+    if (this.state === null || this.state === undefined) {
       return `Start state is not provided`;
     }
     if (this.state.label === undefined) {

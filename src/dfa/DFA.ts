@@ -23,7 +23,7 @@ export default class DFA extends BaseAutomaton {
   }
 
   private stateIsValid(state: DFAState | null): boolean {
-    return state !== null && this.states.includes(state);
+    return state !== undefined && state !== null && this.states.includes(state);
   }
 
   private transitionsForCurrentState(state: DFAState): Array<DFATransition> {

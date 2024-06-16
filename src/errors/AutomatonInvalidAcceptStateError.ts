@@ -4,14 +4,14 @@ import AutomatonState from '../AutomatonState';
 import BaseAutomaton from '../BaseAutomaton';
 export default class AutomatonInvalidAcceptStateError<T extends BaseAutomaton> extends BaseAutomatonError {
   constructor(
-    private state: AutomatonState<T> | null,
+    private state: AutomatonState<T> | null = null,
     private automaton: BaseAutomaton
   ) {
     super();
   }
 
   override errorString(): string {
-    if (this.state === null) {
+    if (this.state === null || this.state === undefined) {
       return `Accept state is invalid`;
     }
     if (this.state.label === undefined) {
