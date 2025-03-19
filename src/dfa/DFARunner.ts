@@ -222,7 +222,10 @@ export default class DFARunner {
                 // state that this transition is targeting. Its input string will be
                 // whatever remains of the current input string after removing the
                 // first token in line.
-                const newInstance = new DFARunInstance_1.default(transition.targetState, runInstance.remainingTokens.slice(1));
+                const newInstance = new DFARunInstance(
+          		transition.targetState,
+          		runInstance.remainingTokens.slice(1)
+        	);
                 
                 newRunInstances.push(newInstance);
                 retLable=newInstance.currentState.label;
