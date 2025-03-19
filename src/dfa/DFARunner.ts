@@ -228,7 +228,7 @@ export default class DFARunner {
         	);
                 
                 newRunInstances.push(newInstance);
-                retLable=newInstance.currentState.label;
+                retLable = newInstance.currentState?.label ?? "";
             }
             
         }
@@ -278,7 +278,7 @@ export default class DFARunner {
 
     runUntilConclusionDebug() {
         let returnarray = [];
-        returnarray.push(this.runInstances[0].currentState.label);
+        returnarray.push(this.runInstances[0].currentState?.label ?? "");
         while (!this.hasConcluded()) {
             returnarray.push(this.runStepDebug());
         }
