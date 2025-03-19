@@ -197,7 +197,7 @@ export default class DFARunner {
         // DFARunInstance objects. Each DFARunInstance contains a current position
         // in the automaton, and a remaining string of input tokens.
         
-        let newRunInstances = new Array();
+        let newRunInstances = new Array<DFARunInstance>();
         // Here, we iterate through all of the current run instance objects to
         // determine what the next set of run instance objects will be. Note that
         // a run instance object never lasts more than a single step - if it doesn't
